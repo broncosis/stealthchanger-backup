@@ -1,0 +1,73 @@
+[include mainsail.cfg]
+[include fluidd.cfg]
+
+[exclude_object]
+[respond]
+
+[pause_resume]
+
+[save_variables]
+filename:  ~/variables.cfg
+
+[gcode_arcs]
+resolution: 0.2
+[include mcu.cfg]
+
+[virtual_sdcard]
+path: /home/pi/printer_data/gcodes
+on_error_gcode: CANCEL_PRINT
+
+
+[printer]
+kinematics: corexy
+max_velocity: 900
+max_accel: 10000
+max_z_velocity: 200
+max_z_accel: 500
+
+[force_move]
+enable_force_move: True
+
+[quad_gantry_level]
+##	Gantry Corners for 350mm Build
+gantry_corners:
+	-70,-10
+	420,410
+#	Probe points
+points:
+	50,50
+	50,300
+	300,300
+	300,50
+#   Probe points
+speed: 550
+horizontal_move_z: 15
+max_adjust: 25
+
+[bed_mesh]
+speed: 250
+horizontal_move_z: 10
+mesh_min: 20, 20
+mesh_max: 320, 320
+probe_count: 3,3
+
+#[resonance_tester]
+# accel_chip: adxl345
+# probe_points:
+#     175, 175, 20 
+
+[include toolchanger-tool_detection.cfg]
+[include toolchanger.cfg]
+[include toolchanger-macros.cfg]
+[include toolchanger-homing.cfg]
+
+[include toolchanger-usermacros.cfg]
+[include toolchanger-extra-macro-examples.cfg]
+[include calibrate-offsets.cfg]
+[include calibrate-offsets-macros.cfg]
+[include macros.cfg]
+[include menu.cfg]
+[include tool0.cfg]
+[include tool1.cfg]
+[include tool2.cfg]
+[include tool3.cfg]
